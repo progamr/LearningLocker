@@ -1,0 +1,30 @@
+language: php
+
+php:
+  - 5.5
+
+services:
+  - mongodb
+
+install:
+  - echo y | pecl install mongo
+  - php -r "readfile('https://getcomposer.org/installer');" | php
+  - php composer.phar install --no-interaction --dev
+
+before_script:
+  - phpenv config-add travisconfig.ini
+  - sleep 3
+  - sudo chmod -R 777 ./uploads
+  - php artisan migrate --env="testing"
+
+script: ./vendor/bin/phpunit
+after_success: sh test.sh
+
+notifications:
+  slack:
+    secure: bSHZUJ5uisX15oQVLu/6Q+Q6719//x1oWo02noCY2WhXTszTbdKV25OG34pwcndO7AfrXLetm6CAF46Yj0K+GzwEtqjear8JQj8ugnZmjJTG0prYNzFJic7Lkf2a+2mROBDd60cLDW3OMGhBvxMV5ZEhutQ9o+fwMgcbKIy/gAM=
+  webhooks:
+    urls:
+      - secure: "IH89fjFa94bV0+RCyoRYcUGpBDT/F87Vdpki+wH7HoowVN7Zsv0O+V6Bl6Xl31VqrEJ3KmBcVpm4KL3Fkv081NqRmC03pqyNmLhHzf10k2m6kFm52pwD6t8f4eoRHuCHnbFdAMBCBfQbXC8oVFXtSNtfISYikCrs6uZ/cwmAxWk="
+    on_success: change
+    on_failure: change

@@ -1,0 +1,14 @@
+{
+  "name": "learninglocker/statementfactory",
+  "description": "Learning Locker's classes for xAPI.",
+  "license": "GPL v3",
+  "autoload": {
+      "psr-4": { "Locker\\XApi\\": "src/" }
+  },
+  "authors": [
+    {
+      "name": "Ryan Smith",
+      "email": "0ryansmith1994@gmail.com"
+    }
+  ]
+}
