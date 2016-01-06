@@ -1,0 +1,36 @@
+This is a prief installation guide for installing Learning Locker LRS:
+----------------------------------------------------------------------
+
+
+- this is a link for the article i followed for installing LL on a Ubuntu Linux machine:
+http://www.jpablo128.com/how-to-install-learning-locker/
+----------------------------------------------------------------------
+Notes::
+1- install requirements:
+Mongo DB-
+https://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
+NodeJS-
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server 
+(use the PPA method of installation)
+
+and the following software:
+curl, apache2 php5, php-pear, php5-mongo, php5-mcrypt, git, mysql-server, postfix
+ , composer
+
+2- 
+------MongoDB Export & Import DBs---------------------------------------------
+--To Export the database to some folder in your project directory use this command
+-d databasename -o backub_directory
+Example: -d learninglocker -o var/www/learninglocker/database
+--To import the database for the project it is saved into /var/www/learninglocker/database
+ 
+simpley use this command
+mongorestore -d DATABASE backub_directory
+Example: mongorestore -d DATABASE /var/www/learninglocker/database/
+
+- solution from the same question 
+follow the first answer in this question and the replayes on this answer.
+http://stackoverflow.com/questions/11255630/how-to-export-all-collection-in-mongodb
+---------------------------------------------------
+
+
